@@ -23,10 +23,10 @@
         });
         localStorage.steammarketdeletealllotsinprogress = 1;
         var deleted = 0;
-        var total = $J('div.market_listing_cancel_button').length;
+        var total = $J('#tabContentsMyActiveMarketListingsRows').find('div.market_listing_cancel_button').length;
         if(total <= 0) { alert('Not found lots. Nothing to do.'); localStorage.removeItem("steammarketdeletealllotsinprogress"); return false; }
         var modal = ShowBlockingWaitDialog( 'Executing...', 'Please wait until all requests finish. Ignore all the errors, let it finish.' );
-        $J('div.market_listing_cancel_button').each(function(i, el){
+        $J('#tabContentsMyActiveMarketListingsRows').find('div.market_listing_cancel_button').each(function(i, el){
             var res = $J(this).html().match(/RemoveMarketListing\('[\/]?mylisting', '(\d+)', (\d+), '(\d+)', '(\d+)'/i);
             if(!res) {res = $J(this).html().match(/type="checkbox" class="lfremove" data-listingid="(\d+)"/i);}
             if(res){
